@@ -29,12 +29,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setIpAddressText(){
+    private fun setIpAddressText() {
         lbl_ip_address.text = when (this.getNetworkConnectionType()) {
             NO_CONNECTION_DETECTED -> getString(R.string.not_connected)
             MOBILE_NETWORK_DETECTED -> getString(R.string.connetected_mobile)
-            WIFI_NETWORK_DETECTED -> retrieveWifiIpAddress()
-            else -> ""
+            WIFI_NETWORK_DETECTED -> retrieveWifiIpAddress() ?: getString(R.string.error_detecting_ip)
+            else -> getString(R.string.error_detecting_connection_type)
         }
     }
 
