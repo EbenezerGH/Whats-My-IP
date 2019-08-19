@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Whats My IP</string>
+    <string name="refresh">Refresh</string>
+    <string name="bad_host_exception">Unable to get host address</string>
+    <string name="not_connected">No Connectivity Detected</string>
+    <string name="connetected_mobile">On Mobile Network</string>
+</resources>
