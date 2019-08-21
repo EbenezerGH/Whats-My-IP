@@ -1,4 +1,4 @@
-package com.ipaddress
+package com.whatsmyipaddress
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
@@ -22,20 +22,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        setIpAddressText()
+        lbl_ip_address.text = setIPMessageString(this.getNetworkConnectionType())
 
         lbl_refresh.setOnClickListener {
-            setIpAddressText()
+            lbl_ip_address.text = setIPMessageString(this.getNetworkConnectionType())
         }
     }
 
-    private fun setIpAddressText() {
-        lbl_ip_address.text = when (this.getNetworkConnectionType()) {
-            NO_CONNECTION_DETECTED -> getString(R.string.not_connected)
-            MOBILE_NETWORK_DETECTED -> getString(R.string.connetected_mobile)
-            WIFI_NETWORK_DETECTED -> retrieveWifiIpAddress() ?: getString(R.string.error_detecting_ip)
-            else -> getString(R.string.error_detecting_connection_type)
-        }
+    private fun setIPMessageString(networkConnectionType: Int) = when (networkConnectionType) {
+        NO_CONNECTION_DETECTED -> getString(R.string.not_connected)
+        MOBILE_NETWORK_DETECTED -> getString(R.string.connetected_mobile)
+        WIFI_NETWORK_DETECTED -> retrieveWifiIpAddress() ?: getString(R.string.error_detecting_ip)
+        else -> getString(R.string.error_detecting_connection_type)
     }
 
     private fun retrieveWifiIpAddress(): String? {

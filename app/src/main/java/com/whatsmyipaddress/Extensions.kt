@@ -1,4 +1,4 @@
-package com.ipaddress
+package com.whatsmyipaddress
 
 import android.content.Context
 import android.net.ConnectivityManager
