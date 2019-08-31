@@ -5,6 +5,14 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('C:\\Users\\findr\\Documents\\android\\projects\\whatsmyip-keystore.jks')
+            keyAlias = 'key0'
+            storePassword 'xW+W2+(e4PwWEq46'
+            keyPassword 'xW+W2+(e4PwWEq46'
+        }
+    }
     compileSdkVersion 29
     buildToolsVersion "29.0.1"
     defaultConfig {
@@ -14,6 +22,7 @@ android {
         versionCode 1
         versionName "1.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.release
     }
     buildTypes {
         release {
